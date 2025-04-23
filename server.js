@@ -8,11 +8,9 @@ const PORT = 3000;
 // Enable CORS for all routes
 app.use(cors());
 
-// Proxy endpoint
 app.get('/api/vat/:country/:vatNumber', async (req, res) => {
   const { country, vatNumber } = req.params;
-  // const url = `https://ec.europa.eu/taxation_customs/vies/rest-api/ms/${country}/vat/${vatNumber}`;
-  const url = `http://10.1.1.119:5555/viesCustomer/customer/${vatNumber}?country=${country}`
+  const url = `https://ec.europa.eu/taxation_customs/vies/rest-api/ms/${country}/vat/${vatNumber}`;
 
   fetch(url)
   .then(response => {
